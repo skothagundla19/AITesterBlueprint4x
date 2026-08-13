@@ -1,0 +1,23 @@
+Area: DataOps → Request → Filter selection
+
+change:
+#1 Filter Dropdown Behavior
+Currently, the filter selection dropdown displays both active and inactive suppression filters. Update the functionality so that only Active suppression filters are shown in the dropdown and inactive suppression filters should not be shown in the dropdown
+
+#2 Edit Request Behavior
+When editing an existing request:
+
+If the selected filter has become Inactive, it should still be displayed in the edit screen.
+
+If the user attempts to save/update the request without changing the inactive filter, an error popup should be displayed indicating that the selected filter is inactive.
+
+The user should then be able to select an active filter and save the request successfully.
+
+#3 Duplicate Request Behavior
+When duplicating an existing request:
+
+If the original request contains an Inactive filter, the request should still be duplicated successfully.
+
+During save, an error popup should be displayed indicating that the selected filter is inactive.
+
+The user should be allowed to choose an active filter and then save the duplicated request successfully.
