@@ -1,4 +1,4 @@
-"""Chat screen: type 'create tc for <JIRA-KEY>' to generate test cases."""
+"""Chat screen: type 'create testcases for <JIRA-KEY>' to generate test cases."""
 import os
 import re
 
@@ -32,7 +32,7 @@ render_status_badges(
         ("Jira configured" if has_jira_config else "Jira setup incomplete", "ok" if has_jira_config else "warn"),
     ]
 )
-st.caption('Tip: Use a prompt like "KAN-6"')
+st.caption("Create Testcases based on provided Jira ID")
 
 if "messages" not in st.session_state:
     st.session_state.messages = []
@@ -81,7 +81,7 @@ for i, message in enumerate(st.session_state.messages):
 st.markdown("</div>", unsafe_allow_html=True)
 
 with st.form(key="chat_form", clear_on_submit=True):
-    user_input = st.text_input("Message", placeholder="KAN-6", label_visibility="collapsed")
+    user_input = st.text_input("Message", placeholder="Enter Jira ID Here", label_visibility="collapsed")
     sent = st.form_submit_button("Send")
 
 if sent and user_input.strip():

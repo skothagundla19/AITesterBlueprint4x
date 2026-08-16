@@ -205,9 +205,9 @@ def render_status_badges(badges: list[tuple[str, str]]) -> None:
 def render_sidebar_help(page_name: str) -> None:
     """Render context-specific sidebar guidance."""
     with st.sidebar:
-        st.markdown("## Quick Guide (KAN-6)")
+        st.markdown("## Quick Guide")
         if page_name == "chat":
-            st.markdown('- Use a prompt like "KAN-6".')
+            st.markdown('- Use a prompt like `KAN-6`.')
             st.markdown("- Replies with markdown tables can be exported to Excel.")
             st.markdown("- Configure Jira and LLM provider in Settings page.")
         else:
