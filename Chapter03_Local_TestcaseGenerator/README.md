@@ -2,6 +2,14 @@
 
 A two-screen Streamlit app that turns a Jira ticket into a draft test case set, using a local Ollama model by default and Groq as an automatic fallback.
 
+## Latest Update (UI Refresh)
+
+- Added a shared visual theme with reusable UI helpers in `src/ui_theme.py`.
+- Refreshed Chat and Settings screens with a consistent hero header, card sections, and sidebar quick help.
+- Added status badges for provider and configuration readiness.
+- Improved visual hierarchy, spacing, and mobile-friendly behavior.
+- Kept all Jira/LLM/export logic unchanged.
+
 ## Screens
 
 - **Chat** (`src/app.py`) — type a request like `create tc for VWO-49` and click Send. The app:
@@ -11,6 +19,16 @@ A two-screen Streamlit app that turns a Jira ticket into a draft test case set, 
   4. Sends the merged prompt to Ollama (model `gemma3:1b`) — or Groq if Ollama is unavailable or explicitly selected.
   5. Renders the generated test cases in the chat pane, with a **Download as Excel** button when the reply contains a table.
 - **Settings** (`src/pages/1_Settings.py`) — enter and persist Jira URL/email/API token, Ollama URL, Groq API token, and provider choice.
+
+### UI Highlights
+
+- Shared app styling via `inject_global_styles()` in `src/ui_theme.py`.
+- Reusable hero and status components for both screens.
+- Grouped settings fields into clear sections:
+  - Jira Configuration
+  - Model Provider
+  - Endpoints and Access
+- Improved chat presentation with styled message shell and stronger action button treatment.
 
 ## Setup
 
@@ -53,6 +71,7 @@ Chapter03_Local_TestcaseGenerator/
 │   └── TestcaseCreator.md      # test case template (filled per-ticket)
 └── src/
     ├── app.py                  # Chat screen
+    ├── ui_theme.py             # shared UI theme + helper components
     ├── pages/1_Settings.py     # Settings screen
     ├── config_store.py         # settings.json + .env loader
     ├── jira_client.py          # Jira REST API client
