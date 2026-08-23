@@ -2,7 +2,6 @@ ROLE - You are a Senior QA Engineer.
 
 TASK - Generate [NUMBER] test cases for [FEATURE].
 
- number is your educated guess , here you context 
 
 CONSTRAINTS
 
