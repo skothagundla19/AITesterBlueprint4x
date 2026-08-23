@@ -7,6 +7,9 @@ import {
   addResumeName,
   replaceAllData,
 } from '../db.js'
+import { SEED_JOBS, SEED_RESUMES } from '../lib/seedData.js'
+
+const SEED_FLAG = 'job-tracker-seeded'
 
 export const STATUSES = [
   { id: 'wishlist', label: 'Wishlist', hint: 'Roles worth keeping an eye on' },
@@ -33,7 +36,13 @@ export function useJobs() {
   useEffect(() => {
     let cancelled = false
     ;(async () => {
-      const [allJobs, allResumes] = await Promise.all([getAllJobs(), getAllResumes()])
+      let [allJobs, allResumes] = await Promise.all([getAllJobs(), getAllResumes()])
+      if (allJobs.length === 0 && !localStorage.getItem(SEED_FLAG)) {
+        await replaceAllData({ jobs: SEED_JOBS, resumes: SEED_RESUMES })
+        allJobs = SEED_JOBS
+        allResumes = SEED_RESUMES
+      }
+      localStorage.setItem(SEED_FLAG, '1')
       if (cancelled) return
       setJobs(allJobs.sort((a, b) => (a.position ?? 0) - (b.position ?? 0)))
       setResumes(allResumes)
