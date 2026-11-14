@@ -1,0 +1,184 @@
+{
+  "objective": "Verify that the Request filter dropdown displays only active suppression filters and that edit and duplicate request flows correctly handle inactive filters as described.",
+  "features_to_test": [
+    {
+      "feature": "Filter Dropdown Behavior",
+      "detail": "Dropdown lists only active suppression filters; inactive filters are excluded",
+      "priority": "P1",
+      "source": "description"
+    },
+    {
+      "feature": "Edit Request Behavior",
+      "detail": "When editing, an inactive selected filter remains visible; saving without change shows error popup; user can select active filter and save successfully",
+      "priority": "P1",
+      "source": "description"
+    },
+    {
+      "feature": "Duplicate Request Behavior",
+      "detail": "Duplicating a request with an inactive filter allows duplication; on save an error popup is shown; user can select active filter and save successfully",
+      "priority": "P1",
+      "source": "description"
+    }
+  ],
+  "scope_in": [
+    {
+      "item": "Functional Testing",
+      "source": "description"
+    },
+    {
+      "item": "UI Testing",
+      "source": "description"
+    },
+    {
+      "item": "Integration Testing",
+      "source": "inferred"
+    },
+    {
+      "item": "Regression Testing",
+      "source": "inferred"
+    }
+  ],
+  "scope_out": [
+    {
+      "item": "Performance Testing",
+      "source": "inferred"
+    },
+    {
+      "item": "Security Testing",
+      "source": "inferred"
+    },
+    {
+      "item": "Accessibility Testing",
+      "source": "inferred"
+    },
+    {
+      "item": "Compatibility Testing",
+      "source": "inferred"
+    },
+    {
+      "item": "API Testing",
+      "source": "inferred"
+    }
+  ],
+  "test_environment": {
+    "environments": [],
+    "platforms": [],
+    "browsers": [],
+    "test_data": []
+  },
+  "test_strategy": {
+    "design_techniques": [
+      {
+        "technique": "Equivalence Partitioning",
+        "why": "Separate active vs inactive filter states"
+      },
+      {
+        "technique": "Decision Table Testing",
+        "why": "Cover combinations of edit/duplicate actions with active/inactive filters"
+      },
+      {
+        "technique": "State Transition Testing",
+        "why": "Validate transitions from view to edit/duplicate to save with error handling"
+      }
+    ],
+    "execution_phases": [
+      {
+        "phase": "Phase 1",
+        "focus": "Smoke verification of dropdown content"
+      },
+      {
+        "phase": "Phase 2",
+        "focus": "Functional validation of edit and duplicate flows"
+      },
+      {
+        "phase": "Phase 3",
+        "focus": "Regression run covering existing request features"
+      }
+    ]
+  },
+  "entry_criteria": [
+    "Code build deployed to a test environment",
+    "Test data for active and inactive suppression filters prepared",
+    "UI test environment accessible"
+  ],
+  "exit_criteria": [
+    "All planned test cases executed",
+    "No high‑severity defects open",
+    "All critical defects resolved or deferred with agreement"
+  ],
+  "risks": [
+    {
+      "risk": "Missing or inaccurate filter status data in test environment",
+      "mitigation": "Coordinate with data team to seed known active/inactive filters before testing",
+      "impact": "high",
+      "likelihood": "medium",
+      "source": "inferred"
+    },
+    {
+      "risk": "Error popup UI not implemented as expected",
+      "mitigation": "Confirm design mockup or specification with product owner early",
+      "impact": "medium",
+      "likelihood": "low",
+      "source": "inferred"
+    }
+  ],
+  "assumptions": [
+    "The application distinguishes active vs inactive suppression filters in the backend",
+    "Error pop‑up mechanism exists and can display custom messages"
+  ],
+  "gaps": [
+    {
+      "area": "Functional",
+      "finding": "Acceptance criteria not defined",
+      "question_for_author": "Please provide explicit acceptance criteria for each behavior (filter dropdown, edit request, duplicate request) including expected messages and success conditions.",
+      "severity": "high"
+    },
+    {
+      "area": "Data & environment",
+      "finding": "No test data specified for active/inactive filters",
+      "question_for_author": "What specific filter records (IDs, names) should be used as active and inactive test data?",
+      "severity": "high"
+    },
+    {
+      "area": "Data & environment",
+      "finding": "No environment details (URL, config, feature flags) provided",
+      "question_for_author": "Which test environment should be used for executing these tests (e.g., dev, QA) and are there any feature flags to enable?",
+      "severity": "medium"
+    },
+    {
+      "area": "Data & environment",
+      "finding": "No platforms or browsers specified for UI testing",
+      "question_for_author": "Which platforms and browsers need to be covered for UI testing?",
+      "severity": "medium"
+    },
+    {
+      "area": "Non-functional",
+      "finding": "No performance, security, or accessibility requirements mentioned",
+      "question_for_author": "Are there any performance, security, or accessibility considerations for the filter dropdown and request editing?",
+      "severity": "low"
+    },
+    {
+      "area": "Cross-cutting",
+      "finding": "No guidance on regression scope beyond the described changes",
+      "question_for_author": "Should regression testing include other request functionalities not mentioned in the ticket?",
+      "severity": "low"
+    },
+    {
+      "area": "Clarity",
+      "finding": "Ambiguity around whether an inactive filter displayed in edit/duplicate screens should be selectable before change",
+      "question_for_author": "When an inactive filter is displayed in edit/duplicate screens, should it be selectable or read‑only until the user selects an active filter?",
+      "severity": "medium"
+    },
+    {
+      "area": "Test schedule",
+      "finding": "The ticket carries no due date or milestones, so the schedule in §8 is unpopulated.",
+      "question_for_author": "What is the target test window for KAN-6?",
+      "severity": "medium"
+    }
+  ],
+  "schema_version": "2.0",
+  "issue_key": "KAN-6",
+  "issue_url": "https://kothagundlasudheer.atlassian.net/browse/KAN-6",
+  "generated_at": "2026-08-30T02:53:25.794Z",
+  "model": "openai/gpt-oss-120b"
+}

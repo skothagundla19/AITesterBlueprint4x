@@ -1,0 +1,7 @@
+.venv/
+.uv-cache/
+.langflow-data/
+langflow.stdout.log
+langflow.stderr.log
+langflow.current.stdout.log
+langflow.current.stderr.log
